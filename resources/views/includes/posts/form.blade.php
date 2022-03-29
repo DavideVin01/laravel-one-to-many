@@ -17,10 +17,27 @@
             @endif
             @csrf
             <div class="row">
-                <div class="col-6">
+                <div class="col-3">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title Post</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ old('title', $post->title) }}">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="label">Category Name</label>
+                        <select class="custom-select @error('category_id') is-invalid @enderror" name="category_id">
+                            <option value="">No Category Name Selected</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if (old('category_id', $post->category_id) == $category->id) selected @endif>
+                                    {{ $category->label }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-6">

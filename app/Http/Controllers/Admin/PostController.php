@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -18,7 +19,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('updated_at', 'desc')->paginate(10);
-        return view('admin.posts.index', compact('posts'));
+        $categories = Category::all();
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     /**
@@ -29,8 +31,8 @@ class PostController extends Controller
     public function create()
     {
         $post = new Post();
-
-        return view('admin.posts.create', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.create', compact('post', 'categories'));
     }
 
     /**
@@ -44,7 +46,8 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'string', Rule::unique('posts')->ignore($post->id), 'min:5', 'max:50'],
             'content' => 'required|string',
-            'image' => 'nullable|url'
+            'image' => 'nullable|url',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $data = $request->all();
@@ -76,7 +79,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -91,7 +95,8 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'string', Rule::unique('posts')->ignore($post->id), 'min:5', 'max:50'],
             'content' => 'required|string',
-            'image' => 'nullable|url'
+            'image' => 'nullable|url',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $data = $request->all();
