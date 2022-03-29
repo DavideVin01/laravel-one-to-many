@@ -5,4 +5,3 @@
     <hr>
     @include('includes.posts.form')
 @endsection
-

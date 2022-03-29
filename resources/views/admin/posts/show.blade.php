@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
-        <div>
+        <header>
             <h1>Post #{{ $post->id }}</h1>
-        </div>
+        </header>
         <div>
             
             <div><strong>Slug - </strong>{{ $post->slug }}</div>

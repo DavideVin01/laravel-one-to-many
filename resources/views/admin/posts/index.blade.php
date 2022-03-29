@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <header class="d-flex justify-content-between">
-            <h1>I miei post</h1>
+        <header class="d-flex justify-content-between mb-3">
+            <h1>My posts</h1>
             <a href="{{ route('admin.posts.create') }}">
                 <button class="btn btn-success shadow-sm"><i class="fa-solid fa-plus"></i> Create New Post</button>
             </a>
