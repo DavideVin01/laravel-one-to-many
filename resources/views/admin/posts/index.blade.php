@@ -26,7 +26,7 @@
                         <tr>
                             <th scope="row">{{ $post->id }}</th>
                             <td>{{ $post->title }}</td>
-                            <td><span class="badge badge-pill badge-{{ $post->category->color ?? 'dark' }} shadow-sm pt-1 text-uppercase px-3 w-75">{!! $post->category->label ?? '<i class="fa-solid fa-ban"></i>' !!}</span></td>
+                            <td><span class="badge badge-pill badge-{{ $post->category->color ?? 'secondary' }} shadow-sm pt-1 text-uppercase px-3 w-75">{!! $post->category->label ?? '<i class="fa-solid fa-times"></i>' !!}</span></td>
                             <td>{{ $post->created_at }}</td>
                             <td>{{ $post->updated_at }}</td>
                             <td>

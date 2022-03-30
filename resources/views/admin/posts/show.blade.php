@@ -9,7 +9,7 @@
             
             <div><strong>Slug - </strong>{{ $post->slug }}</div>
             <div class="d-flex justify-content-end">
-                <span class="badge badge-pill badge-{{ $post->category->color ?? 'dark' }} shadow-sm pt-1 text-uppercase px-3 w-100 mt-3">{!! $post->category->label ?? '<i class="fal fa-times"></i>' !!}</span>
+                <span class="badge badge-pill badge-{{ $post->category->color ?? 'secondary' }} shadow-sm pt-1 text-uppercase px-3 w-100 mt-3">{!! $post->category->label ?? '<i class="fa-solid fa-times"></i>' !!}</span>
             </div>
         </div>
     </div>
