@@ -11,22 +11,24 @@
 
 @if($post->exists)
     <h1 class="pb-3"><strong>EDIT POST</strong></h1>
+    <hr>
     <form action="{{route('admin.posts.update', $post->id)}}" method="POST" novalidate>
         @method('PUT')
         @else
         <h1 class="pb-3"><strong>CREATE POST</strong></h1>
+        <hr>
 
         <form action="{{ route('admin.posts.store') }}" method="POST" novalidate>
             @endif
             @csrf
             <div class="row">
-                <div class="col-3">
+                <div class="col-6">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title Post</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ old('title', $post->title) }}">
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-6">
                     <div class="form-group">
                         <label for="label">Category Name</label>
                         <select class="custom-select @error('category_id') is-invalid @enderror" name="category_id">
@@ -58,9 +60,10 @@
                 <div class="col-1 mt-1">
                     <img src="https://banksiafdn.com/wp-content/uploads/2019/10/placeholde-image.jpg" alt="Image" width="65" height="60" id="preview">
                 </div>
-                <div class="col-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Submit</button>
-                </div>
+            </div>
+            <hr>
+            <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Submit</button>
             </div>
     </form>
 
